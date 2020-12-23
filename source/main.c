@@ -101,7 +101,7 @@ int main(int argc, char **argv) {
 	// e.g. printf ("\x1b[%d;%dH", row, column );
 	printf("\x1b[2;0H");
 
-	printf(BLUEBG WHITEFONT "YARPS Coded by Cataclysmix || v1.0\n\n" BLACKBG);
+	clear();
 
 	int start = 1;
 
