@@ -4,9 +4,9 @@
 #include <wiiuse/wpad.h>
 
 // Object Identification
-#define ROCK "Rock"
-#define PAPER "Paper"
-#define SCISSORS "Scissors"
+#define ROCK 1
+#define PAPER 2
+#define SCISSORS 3
 
 #define HOME WPAD_BUTTON_HOME
 #define PLUS WPAD_BUTTON_PLUS
@@ -29,9 +29,10 @@ static void *xfb = NULL;
 static GXRModeObj *rmode = NULL;
 
 void clear() {
-
-	printf("x1B\033[2J");
-	printf("x1B\033[;H");
+	
+	printf("\x1b[2;0H");
+	printf("\x1b[2J");
+	printf("\x1b[2;0H");
 
 	printf(BLUEBG WHITEFONT "YARPS Coded by Cataclysmix || v1.0\n\n" BLACKBG);
 
@@ -46,7 +47,8 @@ int rng(int min, int max) {
 }
 
 void stop() {
-
+	
+	printf("\x1b[2;0H");
 	printf("\x1b[2J");
 	printf("\x1b[2;0H");
 
@@ -100,7 +102,7 @@ int main(int argc, char **argv) {
 	// we can use variables for this with format codes too
 	// e.g. printf ("\x1b[%d;%dH", row, column );
 	printf("\x1b[2;0H");
-
+	
 	clear();
 
 	int start = 1;
@@ -123,8 +125,8 @@ int main(int argc, char **argv) {
 
 			clear();
 
-			char[] playerAction;
-			char[] cpuAction;
+			int playerAction;
+			int cpuAction;
 
 			start = 0;
 
@@ -172,13 +174,17 @@ int main(int argc, char **argv) {
 				if ( pressed & HOME ) stop();
 
 			}
-
-			printf("You chose %s.", playerAction);
+			
+			clear();
+			
+			if (playerAction == 1) printf("You chose Rock.\n\n");
+			if (playerAction == 2) printf("You chose Paper.\n\n");
+			if (playerAction == 3) printf("You chose Scissors\n\n");
 
 			// Computer turn
 			cpuAction = rng(1, 3);
 
-			if (cpuAction == 1) printf("\nThe computer chose Rock.\n\n");
+			if (cpuAction == 1) printf("The computer chose Rock.\n\n");
 			if (cpuAction == 2) printf("The computer chose Paper.\n\n");
 			if (cpuAction == 3) printf("The computer chose Scissors\n\n");
 
