@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <app version="1">
-  <name>Yet Another RPS Game</name>
+  <name>Yet Another RPS</name>
   <coder>Cataclysmix</coder>
   <version>1.0</version>
-  <short_description>Title says it all.</short_description>
-  <long_description>Title says it all.</long_description>
+  <short_description>Simple RPS game.</short_description>
+  <long_description>Use the D-Pad to call an object, and see if you won!</long_description>
   <no_ios_reload />
 </app>
